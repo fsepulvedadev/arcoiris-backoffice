@@ -254,11 +254,15 @@ const CargarArchivo = () => {
         JSON.stringify(formData.terminoDeMateriaGeografico)
       );
     }
-
     if (listosParaEnviar.terminoDeMateriaPropuesto.length > 0) {
       formDataObj.append(
         "terminoDeMateriaPropuesto",
         JSON.stringify(listosParaEnviar.terminoDeMateriaPropuesto)
+      );
+    } else {
+      formDataObj.append(
+        "terminoDeMateriaPropuesto",
+        JSON.stringify(formData.terminoDeMateriaPropuesto)
       );
     }
 
@@ -1187,7 +1191,7 @@ const CargarArchivo = () => {
                   setFormData({
                     ...formData,
                     terminoDeMateriaControlado: {
-                      terminoDeMateriaControlado: e.target.value.toUpperCase(),
+                      terminoControlado: e.target.value.toUpperCase(),
                     },
                   });
                 }}

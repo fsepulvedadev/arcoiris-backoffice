@@ -1,14 +1,16 @@
 import { IconButton, Typography, Chip } from "@material-tailwind/react";
 import { useState, useContext, useEffect } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaSearch } from "react-icons/fa";
 import { MdFileDownload } from "react-icons/md";
 import BarraDeBusqueda from "../components/BarraDeBusqueda";
 import { Context } from "../context/context";
 import LoaderArcoiris from "../components/LoaderArcoiris";
-import date from "date-and-time";
+import { useNavigate } from "react-router-dom";
 
 const Lista = () => {
   const [respuesta, setRespuesta] = useState("");
+
+  const navigate = useNavigate();
 
   const {
     borrarArchivo,
@@ -18,6 +20,7 @@ const Lista = () => {
     setPrimeraBusqueda,
     primeraBusqueda,
     handleDownload,
+    setArchivoSeleccionado,
   } = useContext(Context);
 
   useEffect(() => {
@@ -72,12 +75,36 @@ const Lista = () => {
                 ) : (
                   <table className="min-w-full mt-5">
                     <thead className="bg-white border-b ">
-                      <tr className="bg-blue-500 text-center">
+                      <tr className="bg-blue-500 text-center ">
                         <th
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4"
                         >
-                          Descripcion
+                          Titulo
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        >
+                          Autor
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        >
+                          Tema
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        >
+                          Lugar
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        >
+                          Coleccion
                         </th>
                         <th
                           scope="col"
@@ -89,54 +116,69 @@ const Lista = () => {
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4"
                         >
-                          File
+                          Nivel
                         </th>
                         <th
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4"
                         >
-                          Ubicacion
+                          Fecha
                         </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-white px-6 py-4"
-                        >
-                          Categorias
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-white px-6 py-4"
-                        ></th>
                       </tr>
                     </thead>
-                    <tbody className="text-center">
+                    <tbody className="text-center text-xs">
+                      {console.log(archivos)}
                       {archivos.map((archivo, i) => (
                         <tr
                           key={i}
                           id={archivo._id}
-                          className="bg-gray-100 border-b"
+                          className="bg-gray-100 border-b "
                         >
                           {" "}
+                          <td>{archivo.titulo.titulo}</td>
+                          <td>{archivo.autorPersonalAsientoPrincipal.autor}</td>
+                          <td>{archivo.tema.tema}</td>
+                          <td>
+                            <ul>
+                              {archivo.publicacion.map((pub, i) => (
+                                <li key={i}>{pub.lugar}</li>
+                              ))}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {archivo.coleccion.map((pub, i) => (
+                                <li key={i}>{pub.titulo}</li>
+                              ))}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {archivo.terminoDeMateriaNombreDePersona.map(
+                                (pub, i) => (
+                                  <li key={i}>{pub.nombre}</li>
+                                )
+                              )}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                              {archivo.nivel.map((pub, i) => (
+                                <li key={i}>{pub.nivel}</li>
+                              ))}
+                            </ul>
+                          </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 ">
-                            {`${date.format(
-                              new Date(archivo.conferencia.fecha),
-                              "DD-MM-YYYY HH:mm:ss"
-                            )}`}
+                            <ul>
+                              {archivo.publicacion.map((pub, i) => (
+                                <li key={i}>{`${
+                                  new Date(pub.fecha).getDate() + 1
+                                }/${
+                                  new Date(pub.fecha).getMonth() + 1
+                                }/${new Date(pub.fecha).getFullYear()}`}</li>
+                              ))}
+                            </ul>
                           </td>
-                          <td>{archivo.archivo}</td>
-                          <td className="px-6 py-4  overflow-hidden text-sm font-medium text-gray-900">
-                            {archivo.titulo.titulo}
-                          </td>
-                          {/*   
-                         
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {archivo.ubicacion}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {archivo.categoria.map((cat, i) => (
-                              <p key={i}>{cat}</p>
-                            ))}
-                          </td> */}
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <IconButton
                               onClick={() => {
@@ -160,6 +202,17 @@ const Lista = () => {
                               }}
                             >
                               <MdFileDownload className="text-white text-lg" />
+                            </IconButton>
+
+                            <IconButton
+                              color="blue"
+                              className="ml-2"
+                              onClick={() => {
+                                setArchivoSeleccionado(archivo);
+                                navigate("/archivo");
+                              }}
+                            >
+                              <FaSearch className="text-white text-lg" />
                             </IconButton>
                           </td>
                         </tr>
