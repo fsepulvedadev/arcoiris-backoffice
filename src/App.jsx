@@ -12,7 +12,7 @@ import DetalleArchivo from "./pages/DetalleArchivo";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/biblioteca">
       <Layout></Layout>
       <Routes>
         <Route path="/" exact element={<Navigate replace to="/inicio" />} />
