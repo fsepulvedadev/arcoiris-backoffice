@@ -1,10 +1,10 @@
 import { Avatar, Button, Input, Typography } from "@material-tailwind/react";
 import { MdSearch } from "react-icons/md";
-import avatar from "../assets/avatar.jpg";
+import avatar from "../avatar.jpg";
 import { useState, useContext } from "react";
 import { Context } from "../context/context.js";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo-f-azul.svg";
+import logo from "../logo-f-azul.svg";
 
 const Navbar = () => {
   const [busqueda, setBusqueda] = useState("");
