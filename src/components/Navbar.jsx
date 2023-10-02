@@ -1,12 +1,16 @@
 import { Avatar, Button, Input, Typography } from "@material-tailwind/react";
 import { MdSearch } from "react-icons/md";
-import avatar from "../assets/avatar.jpg";
+import avatar from "../avatar.jpg";
 import { useState, useContext } from "react";
 import { Context } from "../context/context.js";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import logo from "../assets/logo-f-azul.svg";
 import { signOut } from "firebase/auth";
 import auth from "../../firebaseConfig";
+=======
+import logo from "../logo-f-azul.svg";
+>>>>>>> f95191b12a34adc57bcdea495a79bbe1d5178cd8
 
 const Navbar = () => {
   const [busqueda, setBusqueda] = useState("");
