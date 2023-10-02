@@ -13,6 +13,8 @@ import { MdUploadFile } from "react-icons/md";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import DivisorCategoria from "../components/DivisorCategoria";
+import { Context } from "../context/context.js";
+import { useContext } from "react";
 
 const CargarArchivo = () => {
   const [formData, setFormData] = useState({
@@ -68,6 +70,8 @@ const CargarArchivo = () => {
     resumen: [],
     direccionElectronica: [],
   });
+
+  const { user } = useContext(Context);
 
   /*  - Armar un array en 'adicionales' en el que se guarden los campos agregados a los que ya existen, 
   - Luego implementar una funcion para recorrer y checkear a que input pertenecen para agregarlos al formData antes de enviar.
@@ -163,6 +167,7 @@ const CargarArchivo = () => {
 
     formDataObj.append("file", formData.file);
     formDataObj.append("size", formData.file.size);
+    formDataObj.append("user", user.email);
     formDataObj.append(
       "autorPersonalAsientoPrincipal",
       JSON.stringify(formData.autorPersonalAsientoPrincipal)

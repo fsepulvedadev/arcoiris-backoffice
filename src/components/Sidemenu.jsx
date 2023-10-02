@@ -13,7 +13,7 @@ const Sidemenu = () => {
     <div className="w-[15vw] flex flex-col fixed items-center justify-start  bg-biblio-500 text-white h-screen">
       <ul className="w-full">
         <Link
-          to={"inicio"}
+          to={"/"}
           className="flex items-center w-full p-2 border-b-[1px] border-t-[1px] border-biblio-500 border-t-white cursor-pointer hover:bg-biblio-200 duration-500"
         >
           <MdOutlineHome className="text-lg" />
@@ -22,7 +22,7 @@ const Sidemenu = () => {
           </Typography>
         </Link>
         <Link
-          to={"cargar-archivo"}
+          to={"/cargar-archivo"}
           className="flex items-center w-full p-2 border-b-[1px] cursor-pointer border-biblio-500 hover:bg-biblio-200 duration-500"
         >
           <MdUploadFile className="text-lg" />
@@ -31,7 +31,7 @@ const Sidemenu = () => {
           </Typography>
         </Link>
         <Link
-          to={"lista"}
+          to={"/lista"}
           className="flex items-center w-full p-2 border-b-[1px] cursor-pointer border-biblio-500 hover:bg-biblio-200 duration-500"
         >
           <MdOutlineCollectionsBookmark className="text-lg" />
@@ -40,7 +40,7 @@ const Sidemenu = () => {
           </Typography>
         </Link>
         <Link
-          to={"estadisticas"}
+          to={"/estadisticas"}
           className="flex items-center w-full p-2 border-b-[1px] cursor-pointer border-biblio-500 hover:bg-biblio-200 duration-500"
         >
           <MdOutlineBarChart className="text-lg" />

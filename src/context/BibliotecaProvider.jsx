@@ -1,5 +1,8 @@
+import { onAuthStateChanged } from "firebase/auth";
 import { Context } from "./context.js";
 import { useState, useEffect } from "react";
+import auth from "../../firebaseConfig.js";
+import { useNavigate } from "react-router-dom";
 
 const BibliotecaProvider = ({ children }) => {
   const [archivos, setArchivos] = useState([]);
@@ -7,9 +10,22 @@ const BibliotecaProvider = ({ children }) => {
   const [primeraBusqueda, setPrimeraBusqueda] = useState(false);
   const [totalArchivosDB, setTotalArchivosDB] = useState(0);
   const [archivoSeleccionado, setArchivoSeleccionado] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     traerTotalArchivos();
+  }, []);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setLoading(false);
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
   }, []);
 
   const traerTotalArchivos = async () => {
@@ -28,8 +44,6 @@ const BibliotecaProvider = ({ children }) => {
       setPrimeraBusqueda(true);
       return;
     }
-
-    console.log(url);
 
     fetch(url)
       .then((res) => {
@@ -92,6 +106,10 @@ const BibliotecaProvider = ({ children }) => {
         handleDownload,
         archivoSeleccionado,
         setArchivoSeleccionado,
+        user,
+        setUser,
+        loading,
+        setLoading,
       }}
     >
       {children}
