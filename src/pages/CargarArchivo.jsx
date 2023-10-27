@@ -167,7 +167,7 @@ const CargarArchivo = () => {
 
     formDataObj.append("file", formData.file);
     formDataObj.append("size", formData.file.size);
-    formDataObj.append("user", user.email);
+    formDataObj.append("user", JSON.stringify(user.email));
     formDataObj.append(
       "autorPersonalAsientoPrincipal",
       JSON.stringify(formData.autorPersonalAsientoPrincipal)
