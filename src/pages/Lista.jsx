@@ -124,6 +124,10 @@ const Lista = () => {
                         >
                           Fecha
                         </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        ></th>
                       </tr>
                     </thead>
                     <tbody className="text-center text-xs">

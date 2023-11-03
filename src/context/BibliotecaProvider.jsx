@@ -29,7 +29,7 @@ const BibliotecaProvider = ({ children }) => {
   }, []);
 
   const traerTotalArchivos = async () => {
-    fetch("http://localhost:3000/archivos?total=true")
+    fetch("https://bibliotecaarcoiris-api.neuquen.gov.ar/archivos?total=true")
       .then((res) => res.json())
       .then((data) => setTotalArchivosDB(data.total));
   };
@@ -38,7 +38,7 @@ const BibliotecaProvider = ({ children }) => {
     if (campo === "fecha") {
       busqueda = busqueda.startDate;
     }
-    let url = `http://localhost:3000/buscar?busqueda=${busqueda}&campo=${campo}`;
+    let url = `https://bibliotecaarcoiris-api.neuquen.gov.ar/buscar?busqueda=${busqueda}&campo=${campo}`;
     if (busqueda === "") {
       setArchivos([]);
       setPrimeraBusqueda(true);
@@ -56,7 +56,7 @@ const BibliotecaProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
   const handleDownload = (file) => {
-    fetch(`http://localhost:3000/descargar/${file}`)
+    fetch(`https://bibliotecaarcoiris-api.neuquen.gov.ar/descargar/${file}`)
       .then((res) => res.blob())
       .then((blob) => {
         const a = document.createElement("a");
@@ -75,16 +75,21 @@ const BibliotecaProvider = ({ children }) => {
   const traerArchivos = async () => {
     setPrimeraBusqueda(false);
     setCargando(true);
-    const response = await fetch("localhost:3000/archivos");
+    const response = await fetch(
+      "https://bibliotecaarcoiris-api.neuquen.gov.ar/archivos"
+    );
     const json = await response.json();
 
     setArchivos(json);
   };
 
   const borrarArchivo = async (id) => {
-    const response = await fetch(`http://localhost:3000/borrar?id=${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://bibliotecaarcoiris-api.neuquen.gov.ar/borrar?id=${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     traerArchivos();
 

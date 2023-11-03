@@ -2,7 +2,7 @@ import Inicio from "./pages/Inicio";
 import Layout from "./components/Layout";
 import CargarArchivo from "./pages/CargarArchivo";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate,
@@ -16,7 +16,6 @@ import Recuperar from "./pages/Recuperar";
 
 function App() {
   return (
-<<<<<<< HEAD
     <Router>
       <Routes>
         <Route
@@ -61,17 +60,6 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar" element={<Recuperar />} />
-=======
-    <Router basename="/biblioteca">
-      <Layout></Layout>
-      <Routes>
-        <Route path="/" exact element={<Navigate replace to="/inicio" />} />
-        <Route path="/inicio" element={<Inicio />} />
-
-        <Route path="/cargar-archivo" element={<CargarArchivo />} />
-        <Route path="/lista" element={<Lista />} />
-        <Route path="/archivo" element={<DetalleArchivo />} />
->>>>>>> f95191b12a34adc57bcdea495a79bbe1d5178cd8
       </Routes>
     </Router>
   );

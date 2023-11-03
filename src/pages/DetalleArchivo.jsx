@@ -4,15 +4,44 @@ import { useContext } from "react";
 import { Typography, Badge } from "@material-tailwind/react";
 import DivisorCategoria from "../components/DivisorCategoria";
 import { TiChevronRight } from "react-icons/ti";
+import { MdFileDownload, MdOutlineArrowBack } from "react-icons/md";
+import { IconButton } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const DetalleArchivo = () => {
-  const { archivoSeleccionado } = useContext(Context);
+  const { archivoSeleccionado, handleDownload } = useContext(Context);
+
+  const navigate = useNavigate();
 
   return (
     <div className="w-[83.5vw] min-h-screen ml-auto flex flex-col justify-start items-center">
-      <Typography className="mx-auto mt-4" variant="h5">
-        Detalle archivo {archivoSeleccionado._id}
-      </Typography>
+      <div className="grid grid-cols-3">
+        <div className="flex gap-2 items-center justify-start">
+          <IconButton
+            color="blue"
+            className="ml-2"
+            onClick={() => {
+              navigate("/lista");
+            }}
+          >
+            <MdOutlineArrowBack className="text-white text-lg" />
+          </IconButton>
+          <IconButton
+            color="amber"
+            className="ml-2"
+            onClick={() => {
+              handleDownload(archivoSeleccionado.archivo);
+            }}
+          >
+            <MdFileDownload className="text-white text-lg" />
+          </IconButton>
+        </div>
+        <Typography className="mx-auto mt-4" variant="h5">
+          Detalle archivo {archivoSeleccionado._id}
+        </Typography>
+        <div></div>
+      </div>
+
       <div className="w-11/12 grid grid-cols-2 gap-x-4 gap-y-4 my-4">
         <div className="border-2 border-blue-gray-400 rounded p-2 ">
           <span className="absolute -mt-5 bg-white px-1 font-bold text-xs">

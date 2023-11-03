@@ -167,7 +167,7 @@ const CargarArchivo = () => {
 
     formDataObj.append("file", formData.file);
     formDataObj.append("size", formData.file.size);
-    formDataObj.append("user", user.email);
+    formDataObj.append("user", JSON.stringify(user.email));
     formDataObj.append(
       "autorPersonalAsientoPrincipal",
       JSON.stringify(formData.autorPersonalAsientoPrincipal)
@@ -315,8 +315,9 @@ const CargarArchivo = () => {
     } else {
       formDataObj.append("resumen", JSON.stringify(formData.resumen));
     }
+    console.log(formDataObj.getAll("size"));
 
-    fetch("http://localhost:3000/upload", {
+    fetch("https://bibliotecaarcoiris-api.neuquen.gov.ar/upload", {
       method: "POST",
       body: formDataObj,
     })
