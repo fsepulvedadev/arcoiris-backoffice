@@ -326,8 +326,6 @@ const CargarArchivo = () => {
         setRespuesta(data);
 
         console.log(data);
-
-        console.log(data);
         setTimeout(() => {
           setRespuesta("");
         }, 2500);
