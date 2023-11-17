@@ -1920,7 +1920,7 @@ const CargarArchivo = () => {
 
           <div className="w-full flex justify-center items-center col-span-2">
             <Button
-              /*   disabled={enviando ? true : false} */
+              disabled={enviando ? true : false}
               onClick={(e) => handleSubmit(e)}
               className="w-1/2 flex items-center justify-center text-[0.80rem] bg-biblio-500 hover:bg-biblio-200"
             >
