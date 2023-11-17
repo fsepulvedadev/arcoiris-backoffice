@@ -124,6 +124,10 @@ const Lista = () => {
                         >
                           Fecha
                         </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4"
+                        ></th>
                       </tr>
                     </thead>
                     <tbody className="text-center text-xs">
@@ -135,26 +139,28 @@ const Lista = () => {
                           className="bg-gray-100 border-b "
                         >
                           {" "}
-                          <td>{archivo.titulo.titulo}</td>
-                          <td>{archivo.autorPersonalAsientoPrincipal.autor}</td>
-                          <td>{archivo.tema.tema}</td>
+                          <td>{archivo.titulo?.titulo}</td>
+                          <td>
+                            {archivo.autorPersonalAsientoPrincipal?.autor}
+                          </td>
+                          <td>{archivo.tema?.tema}</td>
                           <td>
                             <ul>
-                              {archivo.publicacion.map((pub, i) => (
+                              {archivo.publicacion?.map((pub, i) => (
                                 <li key={i}>{pub.lugar}</li>
                               ))}
                             </ul>
                           </td>
                           <td>
                             <ul>
-                              {archivo.coleccion.map((pub, i) => (
+                              {archivo.coleccion?.map((pub, i) => (
                                 <li key={i}>{pub.titulo}</li>
                               ))}
                             </ul>
                           </td>
                           <td>
                             <ul>
-                              {archivo.terminoDeMateriaNombreDePersona.map(
+                              {archivo.terminoDeMateriaNombreDePersona?.map(
                                 (pub, i) => (
                                   <li key={i}>{pub.nombre}</li>
                                 )
@@ -163,14 +169,14 @@ const Lista = () => {
                           </td>
                           <td>
                             <ul>
-                              {archivo.nivel.map((pub, i) => (
+                              {archivo.nivel?.map((pub, i) => (
                                 <li key={i}>{pub.nivel}</li>
                               ))}
                             </ul>
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 ">
                             <ul>
-                              {archivo.publicacion.map((pub, i) => (
+                              {archivo.publicacion?.map((pub, i) => (
                                 <li key={i}>{`${
                                   new Date(pub.fecha).getDate() + 1
                                 }/${

@@ -2,7 +2,7 @@ import Inicio from "./pages/Inicio";
 import Layout from "./components/Layout";
 import CargarArchivo from "./pages/CargarArchivo";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate,

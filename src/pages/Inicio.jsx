@@ -53,28 +53,6 @@ const Inicio = () => {
                     {totalArchivosDB}
                   </p>
                 </li>
-                <li className=" rounded-xl p-2 flex flex-col bg-cyan-200">
-                  <Typography
-                    className="text-xs text-center font-bold underline"
-                    variant="paragraph"
-                  >
-                    Total de Colecciones:
-                  </Typography>
-                  <p className="text-xl no-underline text-center font-bold italic">
-                    134
-                  </p>
-                </li>
-                <li className=" rounded-xl p-2 flex flex-col bg-cyan-200">
-                  <Typography
-                    className="text-xs text-center font-bold underline"
-                    variant="paragraph"
-                  >
-                    Cargas del mes:
-                  </Typography>
-                  <p className="text-xl no-underline text-center font-bold italic">
-                    13
-                  </p>
-                </li>
               </ul>
             </div>
           </div>

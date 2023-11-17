@@ -39,7 +39,7 @@ const Sidemenu = () => {
             Ver colecciones
           </Typography>
         </Link>
-        <Link
+        {/* <Link
           to={"/estadisticas"}
           className="flex items-center w-full p-2 border-b-[1px] cursor-pointer border-biblio-500 hover:bg-biblio-200 duration-500"
         >
@@ -47,7 +47,7 @@ const Sidemenu = () => {
           <Typography className="ml-2 text-sm" variant="paragraph">
             Estadisticas
           </Typography>
-        </Link>
+        </Link> */}
       </ul>
       <ul className="w-full justify-end">
         <li className="p-2  cursor-pointer w-full mt-10">
